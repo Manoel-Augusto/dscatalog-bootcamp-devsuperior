@@ -1,0 +1,14 @@
+postgres://
+czodpgnfzkturp
+:
+51284231024069af27b60131d56ec6092855bd733ac3cff035b372dd688b0935
+@
+ec2-54-91-188-254.compute-1.amazonaws.com
+:
+5432
+/
+d1pmfn8ga91qjl
+
+docker run -p 80:8080 --name dscatalog-heroku -e APP_PROFILE=dev -e DB_URL=jdbc:postgresql://ec2-54-91-188-254.compute-1.amazonaws.com:5432/d1pmfn8ga91qjl -e DB_USERNAME=czodpgnfzkturp -e DB_PASSWORD=51284231024069af27b60131d56ec6092855bd733ac3cff035b372dd688b0935 dscatalog:v1
+
+AWS docker run -p 80:8080 --name dscatalog-heroku -e APP_PROFILE=dev -e DB_URL=jdbc:postgresql://dscatalog.c6f6xquw7ega.us-east-2.rds.amazonaws.com:5432/dscatalog -e DB_USERNAME=postgres -e DB_PASSWORD=12345678 manoel852/dscatalog:v1
