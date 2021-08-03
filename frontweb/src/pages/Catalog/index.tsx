@@ -37,11 +37,11 @@ const Catalog = () => {
   return (
     <div className="container my-4 catalog-container">
       <div className="row catalogo-title-container">
-        <CardLoader/>
+        
       </div>
       <div className="row">
         {isLoading ? (
-          <h1>carregando</h1>
+          <CardLoader/>
         ) : (
           page?.content.map((product) => (
             <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
