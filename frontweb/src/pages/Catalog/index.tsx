@@ -1,10 +1,10 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig } from 'axios';
 import Pagination from 'components/Pagination';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/product';
 import { SpringPage } from 'types/vendor/spring';
-import { BASE_URL } from 'util/requests';
+import { requestBackend } from 'util/requests';
 import ProductCard from '../../components/ProductCard';
 import CardLoader from './CardLoader';
 import './styles.css';
@@ -16,16 +16,14 @@ const Catalog = () => {
   useEffect(() => {
     const params: AxiosRequestConfig = {
       method: 'GET',
-      url: "/products",
-      baseURL:BASE_URL,
+      url: '/products',
       params: {
         page: 0,
         size: 12,
       },
-
     };
     setIsLoading(true);
-    axios(params)
+    requestBackend(params)
       .then((response) => {
         setPage(response.data);
       })
@@ -36,12 +34,10 @@ const Catalog = () => {
 
   return (
     <div className="container my-4 catalog-container">
-      <div className="row catalogo-title-container">
-        
-      </div>
+      <div className="row catalogo-title-container"></div>
       <div className="row">
         {isLoading ? (
-          <CardLoader/>
+          <CardLoader />
         ) : (
           page?.content.map((product) => (
             <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
