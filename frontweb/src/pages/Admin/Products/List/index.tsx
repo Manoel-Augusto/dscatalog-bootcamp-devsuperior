@@ -21,6 +21,10 @@ const List = () => {
         id: 1,
         name: 'Livros',
       },
+      {
+        id: 3,
+        name: 'Celulares',
+      },
     ],
   };
   return (
