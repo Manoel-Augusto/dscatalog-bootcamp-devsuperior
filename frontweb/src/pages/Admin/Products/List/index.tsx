@@ -28,7 +28,7 @@ const List = () => {
     ],
   };
   return (
-    <>
+    <div className="product-crud-container">
       <div className="product-crud-bar-container">
         <Link to="/admin/products/create">
           <button className="btn btn-primary text-white btn-crud-add">
@@ -39,19 +39,17 @@ const List = () => {
         <div className="base-card product-filter-container">Search bar</div>
       </div>
       <div className="row">
-          <div className="col-sm-6 col-md-12">
+        <div className="col-sm-6 col-md-12">
           <ProductCrudCard product={product} />
-          </div>
-          <div className="col-sm-6 col-md-12">
+        </div>
+        <div className="col-sm-6 col-md-12">
           <ProductCrudCard product={product} />
-          </div>
-          <div className="col-sm-6 col-md-12">
+        </div>
+        <div className="col-sm-6 col-md-12">
           <ProductCrudCard product={product} />
-          </div>
-      
+        </div>
       </div>
-    
-    </>
+    </div>
   );
 };
 export default List;
