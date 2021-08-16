@@ -1,5 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
 import Pagination from 'components/Pagination';
+import ProductFilter from 'components/ProductFilter';
 import ProductCrudCard from 'pages/Admin/Products/ProductCrudCard';
 import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
@@ -36,7 +37,7 @@ const List = () => {
       setPage(response.data);
     });
   }, [controlComponentsData]);
-  
+
   useEffect(() => {
     getProducts();
   }, [getProducts]);
@@ -49,7 +50,7 @@ const List = () => {
           </button>
         </Link>
 
-        <div className="base-card product-filter-container">Search bar</div>
+        <ProductFilter/>
       </div>
       <div className="row">
         {page?.content.map((product) => (
