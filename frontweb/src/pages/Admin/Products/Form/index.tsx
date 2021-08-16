@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import Select from 'react-select';
 import { Category } from 'types/category';
@@ -13,24 +13,23 @@ type UrlParams = {
   productId: string;
 };
 const Form = () => {
-
   const { productId } = useParams<UrlParams>();
   const isEditing = productId !== 'create';
   const history = useHistory();
-  const [selectCategories, setSelectCategories]=useState<Category[]>([])
+  const [selectCategories, setSelectCategories] = useState<Category[]>([]);
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    control,
   } = useForm<Product>();
 
   useEffect(() => {
-    requestBackend({url:'/categories'})
-    .then(response =>{
+    requestBackend({ url: '/categories' }).then((response) => {
       setSelectCategories(response.data.content);
-    })
-  },[])
+    });
+  }, []);
 
   useEffect(() => {
     if (isEditing) {
@@ -77,15 +76,44 @@ const Form = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row product-crud-inputs-container">
             <div className="col-lg-6 product-crud-inputs-left-container">
-              
               <div className="margin-bottom-30">
-               <Select
-               options={selectCategories}
-               classNamePrefix="product-crud-select"
-               isMulti
-               getOptionLabel={(category:Category)=>category.name}
-               getOptionValue={(category:Category)=>String(category.id)}
-               />
+                <input
+                  {...register('name', {
+                    required: 'Campo obrigatório',
+                  })}
+                  type="text"
+                  className={`form-control base-input ${
+                    errors.name ? 'is-invalid' : ''
+                  }`}
+                  placeholder="Nome"
+                  name="name"
+                />
+                <div className="invalid-feedback d-block">
+                  {errors.name?.message}
+                </div>
+
+                <Controller
+                  name="categories"
+                  rules={{ required: true }}
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      {...field}
+                      options={selectCategories}
+                      classNamePrefix="product-crud-select"
+                      isMulti
+                      getOptionLabel={(category: Category) => category.name}
+                      getOptionValue={(category: Category) =>
+                        String(category.id)
+                      }
+                    />
+                  )}
+                />
+                {errors.categories && (
+                  <div className="invalid-feedback d-block">
+                   Campo obrigatório
+                  </div>
+                )}
               </div>
 
               <input
