@@ -7,17 +7,21 @@ import './styles.css';
 import { useEffect, useState } from 'react';
 import { requestBackend } from 'util/requests';
 
-type ProductFilterData = {
+export type ProductFilterData = {
   name: string;
   category: Category|null;
 };
-const ProductFilter = () => {
+
+type Props ={
+  onSubmitFilter:(data:ProductFilterData)=>void;
+}
+const ProductFilter = ({onSubmitFilter}:Props) => {
   const [selectCategories, setSelectCategories] = useState<Category[]>([]);
 
   const { register, handleSubmit, setValue, getValues, control } = useForm<ProductFilterData>();
 
   const onSubmit = (formData: ProductFilterData) => {
-    console.log('enviou ', formData);
+    onSubmitFilter(formData);
   };
 const handleFormClear=()=>{
 setValue('name', '');
@@ -32,7 +36,7 @@ const handleChangeCategory=(value:Category)=>{
     category:getValues('category')
   }
 
-  console.log('enviou ', obj);
+  onSubmitFilter(obj);
 }
   useEffect(() => {
     requestBackend({ url: '/categories' }).then((response) => {
