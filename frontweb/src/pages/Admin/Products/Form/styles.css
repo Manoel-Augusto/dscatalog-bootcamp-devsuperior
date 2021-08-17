@@ -47,6 +47,8 @@
   display: none;
 }
 
+
+
 @media (min-width: 576px) {
   .product-crud-buttons-container {
     justify-content: flex-end;
