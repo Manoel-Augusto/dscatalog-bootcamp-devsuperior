@@ -1,17 +1,11 @@
-import { render, screen } from "@testing-library/react";
-import ButtonIcon from "..";
+import { render, screen } from '@testing-library/react';
+import ButtonIcon from '..';
 
-test('ButtonIcon should render button with given text', ()=>{
-    //ARRANGE
-    const text="Fazer login";
+test('ButtonIcon should render button with given text', () => {
+  const text = 'Fazer login';
 
-    //ACT
-    render(
-        <ButtonIcon text={text}/>
-    )
+  render(<ButtonIcon text={text} />);
 
-    //screen.debug()
-
-    //ASSERT
-    expect(screen.getByText(text)).toBeInTheDocument();
-})
+  expect(screen.getByText(text)).toBeInTheDocument();
+  expect(screen.getByTestId('arrow')).toBeInTheDocument();
+});
