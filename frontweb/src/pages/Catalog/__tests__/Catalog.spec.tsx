@@ -2,7 +2,12 @@ import history from 'util/history';
 import { Router } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import Catalog from '..';
+import {server} from './fixtures'
 
+  beforeAll(() =>   server.listen());
+  afterEach(()=>server.resetHandlers);
+  afterAll(() =>  server.close())
+  
 test('should render Catalog with products', async() => {
   render(
     <Router history={history}>
@@ -10,7 +15,7 @@ test('should render Catalog with products', async() => {
       );
     </Router>
   );
-  
+
   expect(screen.getByText('Catálogo de produtos')).toBeInTheDocument();
   
   await waitFor(()=>{
