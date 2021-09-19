@@ -230,8 +230,6 @@ const findAllRespopnse = {
 
 export const server = setupServer(
   rest.get(`${BASE_URL}/products`, (req, res, ctx) => {
-    return res(
-        ctx.status(200),
-        ctx.json(findAllRespopnse));
+    return res(ctx.status(200), ctx.json(findAllRespopnse));
   })
 );
