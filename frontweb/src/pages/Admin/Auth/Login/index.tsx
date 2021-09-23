@@ -111,6 +111,7 @@ const Login = () => {
             CADASTRAR
           </Link>
         </div>
+        <div>AVISO! a primeira requisição pode demorar alguns segundos pois por padrão o servidor da API fica em modo 'sleep'</div>
       </form>
     </div>
   );

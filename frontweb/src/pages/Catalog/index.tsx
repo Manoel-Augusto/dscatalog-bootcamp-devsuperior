@@ -54,6 +54,7 @@ const Catalog = () => {
           ))
         )}
       </div>
+      <div>AVISO! a primeira requisição pode demorar alguns segundos pois por padrão o servidor da API fica em modo 'sleep'</div>
       <div className="row">
         <Pagination
           pageCount={page ? page.totalPages : 0}
