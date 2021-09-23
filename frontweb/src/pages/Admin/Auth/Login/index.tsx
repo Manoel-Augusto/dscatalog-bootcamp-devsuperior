@@ -98,6 +98,10 @@ const Login = () => {
         <Link to="/admin/auth/recover" className="login-link-recover">
           Esqueci a senha
         </Link>
+        <div className="cred">
+        <p>{<span>Credenciais:</span>} ADM: maria@gmail.com_____senha 123456</p>
+        <p>{<span>Credenciais:</span>} Operador: alex@gmail.com_____senha 123456</p>
+        </div>
         <div className="login-submit">
           <ButtonIcon text="Fazer login" />
         </div>
