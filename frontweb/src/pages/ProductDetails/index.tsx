@@ -51,10 +51,7 @@ const ProductDetails = () => {
                   <h1> {product?.name}</h1>
                   {product && <ProductPrice price={product?.price} />}
                 </div>
-
-               
               </>
-              
             )}
           </div>
           <div className="col-xl-6">

@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import Pagination from 'components/Pagination';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { Product } from 'types/product';
 import { SpringPage } from 'types/vendor/spring';
 import { requestBackend } from 'util/requests';
@@ -12,6 +12,7 @@ import './styles.css';
 const Catalog = () => {
   const [page, setPage] = useState<SpringPage<Product>>();
   const [isLoading, setIsLoading] = useState(false);
+
 
   const getProducts = (pageNumber: number) => {
     const params: AxiosRequestConfig = {
@@ -43,18 +44,25 @@ const Catalog = () => {
 
       <div className="row">
         {isLoading ? (
-          <CardLoader />
+          <>
+            <CardLoader />
+            <div>
+              AVISO! a primeira requisição pode demorar alguns segundos pois por
+              padrão o servidor da API fica em modo 'sleep'
+            </div>
+          </>
         ) : (
           page?.content.map((product) => (
             <div className="col-sm-6 col-lg-4 col-xl-3" key={product.id}>
-              <Link to="/products/1">
+              <Link to={`/products/${product.id}`}>
+                {' '}
                 <ProductCard product={product} />
               </Link>
             </div>
           ))
         )}
       </div>
-      <div>AVISO! a primeira requisição pode demorar alguns segundos pois por padrão o servidor da API fica em modo 'sleep'</div>
+
       <div className="row">
         <Pagination
           pageCount={page ? page.totalPages : 0}
