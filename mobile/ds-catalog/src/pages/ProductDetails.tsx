@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ActivityIndicator, Image, ScrollView, Text, View, TouchableOpacity } from "react-native";
+
 import arrow from "../assets/leftArrow.png";
 import { api } from "../services";
 import { text, theme } from "../styles";
@@ -40,7 +40,7 @@ const ProductDetails = ({
         <View style={theme.detailCard}>
           <TouchableOpacity
             style={theme.goBackContainer}
-            onPress={() => navigation.goBack()}
+           onPress={()=>navigation.goBack()}
           >
             <Image source={arrow} />
             <Text style={text.goBackText}>Voltar</Text>
