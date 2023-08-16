@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import history from './history';
 import { getAuthData } from './storage';
 
-export const BASE_URL ="http://191.252.212.165:80";
+export const BASE_URL ="http://191.252.212.165:8888/";
 
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID ?? 'dscatalog';
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET ?? 'dscatalog123';
