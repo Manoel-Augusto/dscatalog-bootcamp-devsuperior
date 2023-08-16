@@ -16,7 +16,7 @@ const Admin = () => {
           </PrivateRoute>
 
           <PrivateRoute path="/admin/categories">
-            <h1>Category CRUD</h1>
+            <h1>O CRUD de categorias está em desenvolvimento</h1>
           </PrivateRoute>
 
           <PrivateRoute path="/admin/users" roles={['ROLE_ADMIN']}>
